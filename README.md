@@ -1,6 +1,9 @@
 # UrbanHealthOpt
 ## Introduction
 Ensuring fair access to high-quality healthcare is crucial as cities continue to grow. The goal of this project is to optimize urban health center development using a rigorous, data-driven methodology. With a particular focus on New York City, we want to offer actionable insights for the thoughtful placement of healthcare facilities in urban settings by examining a wide range of characteristics, such as population density, economic conditions, and healthcare results.
+
+![](/assets/densityofhospitals.png)
+
 ## Project Overview
 This project's journey starts with the gathering and examination of extensive datasets. To comprehend the current condition of the healthcare infrastructure, we make use of the extensive data from sources like the TIGER/Line Shapefiles, the American Community Survey, and the Health Facility General Information dataset.
 
@@ -22,20 +25,20 @@ The development of our predictive model incorporated a comprehensive and technic
 
 ### **Loss Function Formulation**: 
    - The model's effectiveness was measured using specially designed loss functions, each catering to different aspects of healthcare facility placement.
-   - The **Decay Loss Function** (`\mathcal{L}_{\text{decay}}`) focused on recent hospital developments, giving more weight to newer healthcare facilities:
+   - The **Decay Loss Function** ($\mathcal{L}_{\text{decay}}$) focused on recent hospital developments, giving more weight to newer healthcare facilities:
   
 ```math  
  \mathcal{L}_{\text{decay}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} \min_{\substack{j=1 \\ t_j \in [t_i - \Delta t, t_i + \Delta t]}}^{M} d(\text{block}_i, \text{hospital}_j)
 ```
 
    
-   - The **Loss Function with No Time Constraint** (`\mathcal{L}_{\text{no time}}`) considered all hospitals when computing the distance, irrespective of their operational time frame:
+   - The **Loss Function with No Time Constraint** ($\mathcal{L}_{\text{no time}}$) considered all hospitals when computing the distance, irrespective of their operational time frame:
 
 ```math
      \mathcal{L}_{\text{no time}}(y_{\text{true}}, y_{\text{pred}}) = \frac{1}{N} \sum_{i=1}^{N} \min_{j=1}^{M} d(\text{block}_i, \text{hospital}_j)
 ```
 
-   - The **Corresponding Loss Function** (`\mathcal{L}_{\text{corresponding}}`) evaluated the distance between each block and a specific corresponding hospital:
+   - The **Corresponding Loss Function** ($\mathcal{L}_{\text{corresponding}}$) evaluated the distance between each block and a specific corresponding hospital:
 
 ```math
      \mathcal{L}_{\text{corresponding}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} d(\text{block}_i, \text{hospital}_{\pi(i)})
@@ -74,14 +77,14 @@ This comprehensive approach ensured that our model was robust, scalable, and cap
 
 Our solution for optimizing urban health center planning is built upon a sophisticated statistical model, represented by the following key formula:
 
-```math
+$$
 \mathcal{M}(\text{{block\_id}}) &= l_1 \cdot \frac{1}{\min(x^2, r^2)} \notag \\
 &\quad + l_2 \cdot g(\overline{\text{{age}}}) \notag \\
 &\quad + l_3 \cdot g(\overline{\text{{income}}}) \notag \\
 &\quad + l_4 \cdot g(\overline{\text{{hosp\_rate}}}) \notag \\
 &\quad + l_5 \cdot g(\overline{\text{{cardio\_cases}}}) \notag \\
 &\quad - \lambda \left( \# \text{{hospitals inside}} \min(x^2, r^2) \right)
-```
+$$
 
 In this model:
 - $\mathcal{M}(block_id)$ calculates a score for potential hospital sites, integrating various demographic and healthcare factors.

@@ -41,15 +41,15 @@ The development of our predictive model incorporated a comprehensive and technic
    
    - The **Loss Function with No Time Constraint** ($\mathcal{L}_{\text{no time}}$) considered all hospitals when computing the distance, irrespective of their operational time frame:
 
-$$
+```math
      \mathcal{L}_{\text{no time}}(y_{\text{true}}, y_{\text{pred}}) = \frac{1}{N} \sum_{i=1}^{N} \min_{j=1}^{M} d(\text{block}_i, \text{hospital}_j)
-$$
+```
 
    - The **Corresponding Loss Function** ($\mathcal{L}_{\text{corresponding}}$) evaluated the distance between each block and a specific corresponding hospital:
 
-$$
+```math
      \mathcal{L}_{\text{corresponding}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} d(\text{block}_i, \text{hospital}_{\pi(i)})
-$$
+```
 
 
 

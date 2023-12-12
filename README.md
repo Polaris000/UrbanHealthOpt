@@ -77,14 +77,14 @@ This comprehensive approach ensured that our model was robust, scalable, and cap
 
 Our solution for optimizing urban health center planning is built upon a sophisticated statistical model, represented by the following key formula:
 
-$$
-\mathcal{M}(\text{{block\_id}}) &= l_1 \cdot \frac{1}{\min(x^2, r^2)} \notag \\
-&\quad + l_2 \cdot g(\overline{\text{{age}}}) \notag \\
-&\quad + l_3 \cdot g(\overline{\text{{income}}}) \notag \\
-&\quad + l_4 \cdot g(\overline{\text{{hosp\_rate}}}) \notag \\
-&\quad + l_5 \cdot g(\overline{\text{{cardio\_cases}}}) \notag \\
-&\quad - \lambda \left( \# \text{{hospitals inside}} \min(x^2, r^2) \right)
-$$
+```math
+\mathcal{M}(\text{{block\_id}}) = l_1 \cdot \frac{1}{\min(x^2, r^2)} \notag \\
+\quad + l_2 \cdot g(\overline{\text{{age}}}) \notag \\
+\quad + l_3 \cdot g(\overline{\text{{income}}}) \notag \\
+\quad + l_4 \cdot g(\overline{\text{{hosp\_rate}}}) \notag \\
+\quad + l_5 \cdot g(\overline{\text{{cardio\_cases}}}) \notag \\
+\quad - \lambda \left( \# \text{{hospitals inside}} \min(x^2, r^2) \right)
+```
 
 In this model:
 - $\mathcal{M}(block_id)$ calculates a score for potential hospital sites, integrating various demographic and healthcare factors.

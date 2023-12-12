@@ -35,9 +35,9 @@ The development of our predictive model incorporated a comprehensive and technic
    - The model's effectiveness was measured using specially designed loss functions, each catering to different aspects of healthcare facility placement.
    - The **Decay Loss Function** ($\mathcal{L}_{\text{decay}}$) focused on recent hospital developments, giving more weight to newer healthcare facilities:
   
-$$
+```math
  \mathcal{L}_{\text{decay}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} \min_{\substack{j=1 \\ t_j \in [t_i - \Delta t, t_i + \Delta t]}}^{M} d(\text{block}_i, \text{hospital}_j)
-$$
+```
    
    - The **Loss Function with No Time Constraint** ($\mathcal{L}_{\text{no time}}$) considered all hospitals when computing the distance, irrespective of their operational time frame:
 
@@ -50,7 +50,6 @@ $$
 $$
      \mathcal{L}_{\text{corresponding}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} d(\text{block}_i, \text{hospital}_{\pi(i)})
 $$
-
 
 
 
@@ -134,8 +133,6 @@ loss_functions = [
 
 #### Execute the simulation
 ```python
-results = {}
-
 # run simulation
 results = run_simulation_grid(
     blocks_updated,

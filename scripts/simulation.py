@@ -562,9 +562,9 @@ def run_simulation_grid(
 if __name__ == "__main__":
     # read datasets
     # demographic datasets
-    covid = pd.read_excel("../../data/COVID_hosprate_by_year_inner.xlsx")
-    cardio = pd.read_excel("../../data/HeartAttacks_hosprate_by_year_inner.xlsx")
-    demo = pd.read_excel("../../data/final_merged_9_dec.xlsx")
+    covid = pd.read_excel("../data/COVID_hosprate_by_year_inner.xlsx")
+    cardio = pd.read_excel("../data/HeartAttacks_hosprate_by_year_inner.xlsx")
+    demo = pd.read_excel("../data/final_merged_9_dec.xlsx")
 
     # read hospital dataset
     df = pd.read_csv("../../data/Health_Facility_General_Information_20231025.csv")

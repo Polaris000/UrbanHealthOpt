@@ -1,4 +1,8 @@
 # UrbanHealthOpt
+
+[![Report](https://img.shields.io/badge/Project%20Report-Blue.svg)](docs/UrbanHealthOpt_report.pdf) [![Presentation](https://img.shields.io/badge/Slides-red.svg)](docs/UrbanHealthOpt_presentation.pdf) [![Video](https://img.shields.io/badge/Presentation-blue.svg)](docs/UrbanHealthOpt.mp4)
+
+
 ## Introduction
 Ensuring fair access to high-quality healthcare is crucial as cities continue to grow. The goal of this project is to optimize urban health center development using a rigorous, data-driven methodology. With a particular focus on New York City, we want to offer actionable insights for the thoughtful placement of healthcare facilities in urban settings by examining a wide range of characteristics, such as population density, economic conditions, and healthcare results.
 

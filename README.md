@@ -57,17 +57,20 @@ Our approach acknowledges that there is no single set of ideal parameters for ur
 #### Varying the Distance Threshold Parameter
 - The `distance_threshold` parameter determines the influence radius for building a hospital.
 - A larger `distance_threshold` value typically leads to a broader spread of hospitals.
-- ![Increasing Distance Thresholds](assets/distance_threshold_variations.png) *Figure: Increasing distance thresholds creates a larger spread of hospitals.*
+
+   ![Increasing Distance Thresholds](assets/distance_threshold_variations.png) *Figure: Increasing distance thresholds creates a larger spread of hospitals.*
 
 #### Varying the Population Threshold Parameter
 - The `population_threshold` parameter influences how population density affects hospital placement.
 - Increasing this parameter tends to widen the area of influence for each hospital, leading to a more dispersed distribution.
-- ![Increasing Population Thresholds](assets/population_threshold_variations.png) *Figure: Increasing population thresholds leads to a wider spread of hospitals.*
+
+   ![Increasing Population Thresholds](assets/population_threshold_variations.png) *Figure: Increasing population thresholds leads to a wider spread of hospitals.*
 
 #### Varying the Penalty Parameter
 - The `penalty` parameter quantifies the disincentive for placing hospitals near existing ones.
 - Higher penalty values discourage clustering of hospitals, promoting a more uniform distribution.
-- ![Varying Penalty Values](assets/penalty_variation.png) *Figure: Variation in penalty parameter and its impact on hospital distribution.*
+
+   ![Varying Penalty Values](assets/penalty_variation.png) *Figure: Variation in penalty parameter and its impact on hospital distribution.*
 
 Through these simulations, we continuously refine our model, striving to optimize the balance between various urban planning factors and healthcare accessibility needs. Our goal is to enhance the model's accuracy and applicability in real-world scenarios, ensuring it remains a valuable tool for urban healthcare planning.
 
@@ -95,46 +98,6 @@ In this model:
 - **Exploratory Analysis**: Investigating patterns and relationships within the data to guide our model development.
 - **Solution Implementation**: Crafting a model to predict optimal locations for new healthcare facilities based on demographic and geographic factors.
 - **Comparative Analysis**: Assessing the performance of our model against real-world data to ensure its effectiveness.
-
-## Solution Implementation
-
-The development of our predictive model incorporated a comprehensive and technical approach, focusing on optimizing the placement of healthcare facilities in urban areas. Here's an overview of the process and the key technical aspects:
-
-1. **Data Preprocessing and Integration**: 
-   - The project began with meticulous data preparation, involving cleaning, normalization, and transformation of various datasets like the American Community Survey and TIGER/Line Shapefiles.
-   - We ensured the data was consistent, accurate, and suitable for analysis, setting a strong foundation for the model.
-
-2. **Feature Engineering and Selection**: 
-   - Critical to our model, this step involved identifying and creating relevant features that could significantly impact healthcare facility placement.
-   - Factors such as population density, demographics, economic status, and geographical coordinates were carefully integrated into our model.
-
-3. **Model Development and Implementation**: 
-   - We employed advanced statistical and machine learning techniques to develop a model that could predict optimal locations for healthcare facilities.
-   - The model was iteratively refined, incorporating feedback and insights gained from initial results.
-
-4. **Loss Function Formulation**: 
-   - The model's effectiveness was measured using specially designed loss functions, each catering to different aspects of healthcare facility placement.
-   - The **Decay Loss Function** ($\mathcal{L}_{\text{decay}}$) focused on recent hospital developments, giving more weight to newer healthcare facilities:
-  
-```math
- \mathcal{L}_{\text{decay}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} \min_{\substack{j=1 \\ t_j \in [t_i - \Delta t, t_i + \Delta t]}}^{M} d(\text{block}_i, \text{hospital}_j)
-```
-   
-   - The **Loss Function with No Time Constraint** ($\mathcal{L}_{\text{no time}}$) considered all hospitals when computing the distance, irrespective of their operational time frame:
-
-```math
-     \mathcal{L}_{\text{no time}}(y_{\text{true}}, y_{\text{pred}}) = \frac{1}{N} \sum_{i=1}^{N} \min_{j=1}^{M} d(\text{block}_i, \text{hospital}_j)
-```
-
-   - The **Corresponding Loss Function** ($\mathcal{L}_{\text{corresponding}}$) evaluated the distance between each block and a specific corresponding hospital:
-
-```math
-     \mathcal{L}_{\text{corresponding}}(y_{\text{true}}, y_{\text{pred}}, \Delta t) = \frac{1}{N} \sum_{i=1}^{N} d(\text{block}_i, \text{hospital}_{\pi(i)})
-```
-
-
-
-![](/assets/distance_threshold_variations.png)
 
 
 ### Future Work
